@@ -7,6 +7,10 @@ $color__cyan: hsl(178, 100%, 50%);
 $color__white: hsl(0, 0%, 100%);
 
 //MIXINS
+@mixin cursor--pointer {
+  cursor: pointer;
+}
+
 @mixin flex {
   display: flex;
 }
@@ -70,6 +74,8 @@ body {
   &__image-box {
     position: relative;
     border-radius: 7px;
+    
+    @include cursor--pointer;
 
     &:hover {
       background-image: linear-gradient(rgba($color__cyan, 0.5)),
@@ -113,6 +119,8 @@ body {
     font-size: 1.8rem;
     font-weight: 600;
     color: $color__white;
+
+    @include cursor--pointer;
     @include transition--3s;
 
     &:hover {
@@ -166,8 +174,9 @@ body {
 
   &__author-name {
     font-size: 1.3rem;
-    @include transition--3s;
     color: $color__white;
+    @include cursor--pointer;
+    @include transition--3s;
 
     &:hover {
       color: $color__cyan;
