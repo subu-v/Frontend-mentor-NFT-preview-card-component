@@ -1,0 +1,180 @@
+// VARIABLES
+$color__dark-blue--main-bg: hsl(217, 54%, 11%);
+$color__dark-blue--card-bg: hsl(216, 50%, 16%);
+$color__dark-blue: hsl(215, 32%, 27%);
+$color__soft-blue: hsl(215, 51%, 70%);
+$color__cyan: hsl(178, 100%, 50%);
+$color__white: hsl(0, 0%, 100%);
+
+//MIXINS
+@mixin flex {
+  display: flex;
+}
+
+@mixin flex-direction--col {
+  flex-direction: column;
+}
+
+@mixin flex__center--hv {
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex__justify-content--space-between {
+  justify-content: space-between;
+}
+
+@mixin flex__align-items--center {
+  align-items: center;
+}
+
+@mixin transition--3s {
+  transition: all 0.3s ease;
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  font-weight: 300;
+  background-color: $color__dark-blue--main-bg;
+  height: 100vh;
+  @include flex;
+  @include flex__center--hv;
+}
+
+.container {
+  max-width: 28rem;
+}
+
+.nft-card {
+  @include flex;
+  @include flex-direction--col;
+  @include flex__center--hv;
+  gap: 1.6rem;
+
+  background-color: $color__dark-blue--card-bg;
+  padding: 2.4rem;
+  border-radius: 14px;
+
+  &__image-box {
+    position: relative;
+    border-radius: 7px;
+
+    &:hover {
+      background-image: linear-gradient(rgba($color__cyan, 0.5)),
+        url(../images/image-equilibrium.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: top;
+
+      .nft-card__image {
+        opacity: 0;
+      }
+
+      .nft-card__icon-on-hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &__image {
+    width: 24rem;
+    height: 100%;
+    border-radius: 7px;
+    @include transition--3s;
+  }
+
+  &__icon-on-hover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+  }
+
+  &__info-box {
+    @include flex;
+    @include flex-direction--col;
+    gap: 1.6rem;
+  }
+
+  &__heading {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $color__white;
+    @include transition--3s;
+
+    &:hover {
+      color: $color__cyan;
+    }
+  }
+
+  &__description {
+    font-size: 1.4rem;
+    color: $color__soft-blue;
+  }
+
+  &__price-box {
+    @include flex;
+    @include flex__justify-content--space-between;
+
+    padding-bottom: 1.8rem;
+    border-bottom: 1px solid $color__dark-blue;
+  }
+
+  &__price,
+  &__time-constraint {
+    @include flex;
+    @include flex__align-items--center;
+    gap: 0.6rem;
+
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  &__price {
+    color: $color__cyan;
+  }
+
+  &__time-constraint {
+    color: $color__soft-blue;
+  }
+
+  &__author-info {
+    @include flex;
+    @include flex__align-items--center;
+    gap: 1.2rem;
+  }
+
+  &__author-image {
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 100%;
+    border: 1px solid $color__white;
+  }
+
+  &__author-name {
+    font-size: 1.3rem;
+    @include transition--3s;
+    color: $color__white;
+
+    &:hover {
+      color: $color__cyan;
+    }
+
+    &--soft-blue {
+      color: $color__soft-blue;
+    }
+  }
+}
